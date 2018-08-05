@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  codefirst2:
+    image: codefirst2
+    build:
+      context: .\codeFirst2
+      dockerfile: Dockerfile
