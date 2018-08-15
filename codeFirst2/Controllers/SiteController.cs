@@ -4,6 +4,7 @@ using codeFirst2.DataLayer.LightWightesEntities;
 using codeFirst2.DataLayer.Repositories;
 using codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories;
 using codeFirst2.Models.Factory;
+using codeFirst2.Models.HelperClass;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -35,6 +36,8 @@ namespace codeFirst2.Controllers
         [Route("api/site/sitebyid")]
         public IHttpActionResult GetSite(int i_SiteID)
         {
+            PredictCrops ps = new PredictCrops();
+            ps.mapExcel();
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
                 IHttpActionResult response = NotFound();
