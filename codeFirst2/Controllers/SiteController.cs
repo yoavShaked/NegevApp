@@ -2,8 +2,6 @@
 using codeFirst2.DataLayer.HttpHelper;
 using codeFirst2.DataLayer.LightWightesEntities;
 using codeFirst2.DataLayer.Repositories;
-using codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories;
-using codeFirst2.Models.Factory;
 using codeFirst2.Models.HelperClass;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -56,7 +54,10 @@ namespace codeFirst2.Controllers
         public IHttpActionResult GetPredict(int i_SiteID)
         {
             PredictCrops ps = new PredictCrops();
-            return NotFound();
+            //ps.mapExcel();
+            List<string> s = ps.predictCropsToGrow(i_SiteID);
+
+            return Ok();
         }
 
         [HttpPost]
