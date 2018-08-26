@@ -209,6 +209,7 @@
     <Compile Include="DataLayer\Coordinate.cs" />
     <Compile Include="DataLayer\Crop.cs" />
     <Compile Include="DataLayer\Context\EntitiesNegev4.cs" />
+    <Compile Include="DataLayer\CropContrains.cs" />
     <Compile Include="DataLayer\HttpHelper\CoordinateHendler.cs" />
     <Compile Include="DataLayer\HttpHelper\CropHendler.cs" />
     <Compile Include="DataLayer\HttpHelper\HttpHendlerRequestGeneric.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="DataLayer\LightWightesEntities\LightWeightLayer.cs" />
     <Compile Include="DataLayer\LightWightesEntities\LightWeightSite.cs" />
     <Compile Include="DataLayer\LightWightesEntities\LightWeightSiteByYear.cs" />
+    <Compile Include="DataLayer\Repositories\NegevEntitiesRepositories\CropsConstrainsRepository.cs" />
     <Compile Include="Migrations\201807231821198_InitialCreate.cs" />
     <Compile Include="Migrations\201807231821198_InitialCreate.Designer.cs">
       <DependentUpon>201807231821198_InitialCreate.cs</DependentUpon>
@@ -233,6 +235,18 @@
     <Compile Include="Migrations\201807241228403_blabla.cs" />
     <Compile Include="Migrations\201807241228403_blabla.Designer.cs">
       <DependentUpon>201807241228403_blabla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251417209_add-migration CropsConstrains.cs" />
+    <Compile Include="Migrations\201808251417209_add-migration CropsConstrains.Designer.cs">
+      <DependentUpon>201808251417209_add-migration CropsConstrains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251642300_cropsConstrains2.cs" />
+    <Compile Include="Migrations\201808251642300_cropsConstrains2.Designer.cs">
+      <DependentUpon>201808251642300_cropsConstrains2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251714486_cropsConstrains21.cs" />
+    <Compile Include="Migrations\201808251714486_cropsConstrains21.Designer.cs">
+      <DependentUpon>201808251714486_cropsConstrains21.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Factory\enums\eEntityType.cs" />
@@ -341,6 +355,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807241228403_blabla.resx">
       <DependentUpon>201807241228403_blabla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251417209_add-migration CropsConstrains.resx">
+      <DependentUpon>201808251417209_add-migration CropsConstrains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251642300_cropsConstrains2.resx">
+      <DependentUpon>201808251642300_cropsConstrains2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251714486_cropsConstrains21.resx">
+      <DependentUpon>201808251714486_cropsConstrains21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -115,3 +115,6 @@ C:\Users\user\Desktop\new\NegevAgriculture-server\codeFirst2\obj\Debug\codeFirst
 C:\Users\user\Desktop\new\NegevAgriculture-server\codeFirst2\obj\Debug\codeFirst2.csproj.GenerateResource.Cache
 C:\Users\user\Desktop\new\NegevAgriculture-server\codeFirst2\obj\Debug\codeFirst2.Migrations.First.resources
 C:\Users\user\Desktop\new\NegevAgriculture-server\codeFirst2\obj\Debug\codeFirst2.Migrations.blabla.resources
+C:\Users\user\Desktop\new\NegevAgriculture-server\codeFirst2\obj\Debug\codeFirst2.Migrations.addmigrationCropsConstrains.resources
+C:\Users\user\Desktop\new\NegevAgriculture-server\codeFirst2\obj\Debug\codeFirst2.Migrations.cropsConstrains2.resources
+C:\Users\user\Desktop\new\NegevAgriculture-server\codeFirst2\obj\Debug\codeFirst2.Migrations.cropsConstrains21.resources

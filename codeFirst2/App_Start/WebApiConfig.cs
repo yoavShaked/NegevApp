@@ -14,7 +14,6 @@ namespace codeFirst2
             // Web API configuration and services
 
             // Web API routes
-            //Response.AppendHeader("Access-Control-Allow-Origin", "*");
             var corsAttr = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(corsAttr);
             config.MapHttpAttributeRoutes();

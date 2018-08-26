@@ -36,8 +36,6 @@ namespace codeFirst2.Controllers
         [Route("api/site/sitebyid")]
         public IHttpActionResult GetSite(int i_SiteID)
         {
-            PredictCrops ps = new PredictCrops();
-            ps.mapExcel();
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
                 IHttpActionResult response = NotFound();
@@ -50,6 +48,15 @@ namespace codeFirst2.Controllers
 
                 return response;
             }
+        }
+
+        //TODO
+        [HttpGet]
+        [Route("api/site/predict")]
+        public IHttpActionResult GetPredict(int i_SiteID)
+        {
+            PredictCrops ps = new PredictCrops();
+            return NotFound();
         }
 
         [HttpPost]

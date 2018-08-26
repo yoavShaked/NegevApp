@@ -4,71 +4,117 @@ using System.Linq;
 using System.Web;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.IO;
+using codeFirst2.DataLayer;
+using codeFirst2.DataLayer.Repositories;
+using codeFirst2.DataLayer.HttpHelper;
+using codeFirst2.DataLayer.LightWightesEntities;
+using codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories;
 
 namespace codeFirst2.Models.HelperClass
 {
     public class PredictCrops
     {
-        private readonly Dictionary<string, Dictionary<string, int>> m_CropsMatrix = new Dictionary<string, Dictionary<string, int>>();
 
+        private void addCrop(string name)
+        {
+            using (EntitiesNegev4 context = new EntitiesNegev4())
+            {
+                CropRepository crops = new CropRepository(context);
+                List<Crop> cropsDataBase = crops.GetNegevEntityCollection() as List<Crop>;
+                CropsConstrainsRepository ccrs = new CropsConstrainsRepository(context);
+
+                Crop c = new Crop();
+
+                c.Name = name;
+                c.Quantity = 0;
+                c.SiteByYears = null;
+                c.Description = "";
+                crops.AddRow(c);
+                crops.Save();
+
+            }
+        }
+        private bool isCropExist(string name)
+        {
+            using (EntitiesNegev4 context = new EntitiesNegev4())
+            {
+                CropRepository crops = new CropRepository(context);
+                List<Crop> cropsDataBase = crops.GetNegevEntityCollection() as List<Crop>;
+                CropsConstrainsRepository ccrs = new CropsConstrainsRepository(context);
+                foreach (Crop crop in cropsDataBase)
+                {
+                    if (crop.Name.Equals(name))
+                    {
+                        return true;
+                    }
+                }
+
+            }
+
+            return false;
+        }
+        private int [] convertNamesToIds(string [] names)
+        {
+            int[] ids = new int[names.Length] ;
+            for(int i=1;i<names.Length;i++)
+            {
+                ids[i] = getCropIdByName(names[i]);
+            }
+            return ids;
+        }
+        private void addAllMissingCrops(string[] names)
+        {
+            for (int i = 1; i < names.Length; i++)
+                if (!isCropExist(names[i]))
+                    addCrop(names[i]);
+        }
+ 
+        int getCropIdByName(string name)
+        {
+            using (EntitiesNegev4 context = new EntitiesNegev4())
+            {
+                CropRepository crops = new CropRepository(context);
+                List<Crop> cropsDataBase = crops.GetNegevEntityCollection() as List<Crop>;
+                CropsConstrainsRepository ccrs = new CropsConstrainsRepository(context);
+                List<Crop> x = (from y in context.Crops where y.Name.Equals(name) select y).ToList<Crop>();
+                return x[0].ID;
+            }
+        }
         public void mapExcel()
         {
+            CropHendler m_CropHendler = new CropHendler(new GenericRepository<Crop>());
+            var filePath = @"C:\Users\user\Desktop\excel\rawData.csv";
+            var data = File.ReadLines(filePath).Select(x => x.Split(',')).ToArray();
 
-            //Create COM Objects. Create a COM object for everything that is referenced
-            Microsoft.Office.Interop.Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\user\Desktop\טבלה.xlsx");
-            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
-            Excel.Range xlRange = xlWorksheet.UsedRange;
+            addAllMissingCrops(data[0]);
+            int currentId;
+            int [] ids = convertNamesToIds(data[0]);
 
-            int rowCount = xlRange.Rows.Count;
-            int colCount = xlRange.Columns.Count;
 
-            //iterate over the rows and columns and print to the console as it appears in the file
-            //excel is not zero based!!
-            for (int i = 1; i <= rowCount; i++)
+
+            using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                for (int j = 1; j <= colCount; j++)
-                {
+                CropsConstrainsRepository cropsContains = new CropsConstrainsRepository(context);
 
-                    //write the value to the console
-                    if (i == 1 && j >= 2)
+                for (int i = 1; i < data.Length; i++)
+                {
+                    currentId = getCropIdByName(data[i][0]);
+
+                    for (int j = 1; j < data[i].Length; j++)
                     {
-                        Dictionary<string, int> value = new Dictionary<string, int>();
-                        for(int k = 1; k <= colCount; k++)
-                        {
-                            //value.Add(xlRange.Cells[1, k].Value2.ToString(), )
-                        }
-                        m_CropsMatrix.Add(xlRange.Cells[i, j].Value2, new Dictionary<string, int>());
+                        CropConstrains cc = new CropConstrains();
+                        cc.Crop1_Id = currentId;
+                        cc.Crop2_Id = ids[j];
+                        cc.NumOfYears = int.Parse(data[i][j]);
+
+                        cropsContains.AddRow(cc);
+                        cropsContains.Save();
                     }
-                    else if (i > 1 && xlRange.Cells[i, j] != null)
-                    {
-                        //m_CropsMatrix.Add(xlRange.Cells[i, 1].Value2, )
-                    }
-                        //write the value to the console
-                        if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
-                        Console.Write(xlRange.Cells[i, j].Value2.ToString() + "\t");
                 }
             }
 
-            //cleanup
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            //rule of thumb for releasing com objects:
-            //  never use two dots, all COM objects must be referenced and released individually
-            //  ex: [somthing].[something].[something] is bad
-
-            //release com objects to fully kill excel process from running in the background
-            Marshal.ReleaseComObject(xlRange);
-            Marshal.ReleaseComObject(xlWorksheet);
-
-            //close and release
-            xlWorkbook.Close();
-            Marshal.ReleaseComObject(xlWorkbook);
-
-            //quit and release
-            xlApp.Quit();
-            Marshal.ReleaseComObject(xlApp);
         }
+
     }
 }

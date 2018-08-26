@@ -18,5 +18,6 @@ namespace codeFirst2.DataLayer
         public DbSet<Site> Sites { get; set; }
         public DbSet<Crop> Crops { get; set; }
         public DbSet<Coordinate> Coordinates { get; set; }
+        public DbSet<CropConstrains> CropConstrains { get; set; }
     }
 }
