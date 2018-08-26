@@ -16,6 +16,7 @@ namespace codeFirst2.Models.HelperClass
 {
     public class PredictCrops
     {
+        bool is_not_exist_rull_allowed = true;
 
         private void addCrop(string name)
         {
@@ -41,26 +42,27 @@ namespace codeFirst2.Models.HelperClass
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                CropRepository crops = new CropRepository(context);
-                List<Crop> cropsDataBase = crops.GetNegevEntityCollection() as List<Crop>;
-                CropsConstrainsRepository ccrs = new CropsConstrainsRepository(context);
+                CropRepository cropsRepo = new CropRepository(context);
+                List<Crop> cropsDataBase = cropsRepo.GetNegevEntityCollection() as List<Crop>;
+                bool answer = false;
+
                 foreach (Crop crop in cropsDataBase)
                 {
                     if (crop.Name.Equals(name))
                     {
-                        return true;
+                        answer = true;
+                        break;
                     }
                 }
 
+                return answer;
             }
-
-            return false;
         }
 
-        private int [] convertNamesToIds(string [] names)
+        private int[] convertNamesToIds(string[] names)
         {
-            int[] ids = new int[names.Length] ;
-            for(int i=1;i<names.Length;i++)
+            int[] ids = new int[names.Length];
+            for (int i = 1; i < names.Length; i++)
             {
                 ids[i] = getCropIdByName(names[i]);
             }
@@ -70,10 +72,14 @@ namespace codeFirst2.Models.HelperClass
         private void addAllMissingCrops(string[] names)
         {
             for (int i = 1; i < names.Length; i++)
-                if (!isCropExist(names[i]))
+            {
+                if (isCropExist(names[i]) == false)
+                {
                     addCrop(names[i]);
+                }
+            }
         }
- 
+
         int getCropIdByName(string name)
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
@@ -90,7 +96,7 @@ namespace codeFirst2.Models.HelperClass
 
             addAllMissingCrops(data[0]);
             int currentId;
-            int [] ids = convertNamesToIds(data[0]);
+            int[] ids = convertNamesToIds(data[0]);
 
 
 
@@ -117,14 +123,16 @@ namespace codeFirst2.Models.HelperClass
 
         }
 
-        private int GetYears(int i_PotentialCropId,int i_GrownCropId)
+        public int GetYears(int i_PotentialCropId, int i_GrownCropId)
         {
-            using(EntitiesNegev4 context=new EntitiesNegev4())
+            using (EntitiesNegev4 context = new EntitiesNegev4())
             {
                 var numOfYears =
-                    (from table in context.CropConstrains where
-                                table.Crop1_Id.Equals(i_PotentialCropId) && table.Crop2_Id.Equals(i_GrownCropId) select table.NumOfYears).ToList();
-                return numOfYears[0];
+                    (from x in context.CropConstrains
+                     where x.Crop1_Id.Equals(i_PotentialCropId) && x.Crop2_Id.Equals(i_GrownCropId)
+                     select x.NumOfYears).ToList();
+
+                return numOfYears.Count == 0 ? (is_not_exist_rull_allowed ? -1 : 100000) : numOfYears[0];
             }
         }
 
@@ -132,89 +140,73 @@ namespace codeFirst2.Models.HelperClass
         {
             return DateTime.Now.Year - i_LastYearGrown >= i_YearsToSeperate;
         }
-   
+
         public class CropYearPair
         {
-            public List< int> Years { get; set; }
-            public Crop _Crop { get;set; }
-            public CropYearPair(Crop i_crop)
+            public int Year { get; set; }
+            public Crop _Crop { get; set; }
+            public CropYearPair(Crop i_crop, int i_Year)
             {
-                Years = new List<int>();
+                Year = i_Year;
                 _Crop = i_crop;
             }
         }
 
-
         private List<CropYearPair> GetCropsBySiteId(int i_SiteId)
         {
-            using(EntitiesNegev4 context=new EntitiesNegev4())
+            using (EntitiesNegev4 context = new EntitiesNegev4())
             {
                 Site site;
                 SiteRepository siteRepo = new SiteRepository(context);
                 site = siteRepo.GetRowByKey(i_SiteId);
                 context.Entry(site).Collection(x => x.SiteByYears).Load();
                 List<CropYearPair> cropsAndYears = new List<CropYearPair>();
-                foreach(SiteByYear sby in site.SiteByYears)
+
+                foreach (SiteByYear sby in site.SiteByYears)
                 {
                     context.Entry(sby).Reference(x => x.CurrentCrop).Load();
                     context.Entry(sby).Reference(x => x.CurrentLayer).Load();
-
-                    if (cropsAndYears.Exists(e => e._Crop.ID == sby.CurrentCrop.ID))
-                    {
-                        cropsAndYears.Find(e => e._Crop.ID == sby.CurrentCrop.ID).Years.Add(sby.CurrentLayer.Year);
-                    }
-                    else
-                    {
-                        CropYearPair cyp = new CropYearPair(sby.CurrentCrop);
-                        cyp.Years.Add(sby.CurrentLayer.Year);
-                        cropsAndYears.Add(cyp); 
-                    }
+                    cropsAndYears.Add(new CropYearPair(sby.CurrentCrop, sby.CurrentLayer.Year));
                 }
 
                 return cropsAndYears;
             }
         }
 
-        public List<string> predictCropsToGrow(int i_SiteID)
+        public List<Crop> predictCropsToGrow(int i_SiteID)
         {
-            
-            using(EntitiesNegev4 context = new EntitiesNegev4())
+            List<Crop> allAllowedCrops = new List<Crop>();
+
+            using (EntitiesNegev4 context = new EntitiesNegev4())
             {
                 CropRepository cropRepo = new CropRepository(context);
                 List<Crop> allCrops = cropRepo.GetNegevEntityCollection() as List<Crop>;
-                List<string> namesOfAllowedCrops = new List<string>();
-                List<CropYearPair> cropsByYears = GetCropsBySiteId(i_SiteID);
-                CropsConstrainsRepository ccr = new CropsConstrainsRepository(context);
-                CropConstrains rule = null;
+                List<CropYearPair> cropYearsPairs = GetCropsBySiteId(i_SiteID);
+                CropsConstrainsRepository cropConstrainRepo = new CropsConstrainsRepository(context);
 
                 foreach (Crop crop in allCrops)
                 {
-                    bool addingOrNot = true;
+                    bool allowGrow = true;
 
-                    foreach(CropYearPair cyp in cropsByYears)
+                    foreach (CropYearPair cyp in cropYearsPairs)
                     {
-                        int growingCropID = getCropIdByName(cyp._Crop.Name);
-                       
-                        if (rule != null)
+                        int allowedYears = GetYears(crop.ID, cyp._Crop.ID);
+                        if (!determineIfCropAllowed(allowedYears, cyp.Year))
                         {
-                            int seprateNumOfYears = GetYears(crop.ID, growingCropID);
-                            if (!determineIfCropAllowed(seprateNumOfYears, cyp.Years[cyp.Years.Count - 1]))
-                            {
-                                addingOrNot = false;
-                                break;
-                            }
+                            allowGrow = false;
+                            break;
                         }
                     }
 
-                    if (addingOrNot)
+                    if(allowGrow)
                     {
-                        namesOfAllowedCrops.Add(crop.Name);
+                        allAllowedCrops.Add(crop);
                     }
                 }
 
-                return namesOfAllowedCrops;
             }
-        }
 
+            return allAllowedCrops;
+        }
     }
 }

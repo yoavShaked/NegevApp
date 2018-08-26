@@ -48,16 +48,22 @@ namespace codeFirst2.Controllers
             }
         }
 
-        //TODO
+        //PREDICT CROP
         [HttpGet]
         [Route("api/site/predict")]
         public IHttpActionResult GetPredict(int i_SiteID)
         {
+            List<LightWeightCrop> to_return = new List<LightWeightCrop>();
             PredictCrops ps = new PredictCrops();
-            //ps.mapExcel();
-            List<string> s = ps.predictCropsToGrow(i_SiteID);
 
-            return Ok();
+            List<Crop> crops = ps.predictCropsToGrow(i_SiteID);
+
+            foreach(Crop crop in crops)
+            {
+                to_return.Add(new LightWeightCrop(crop));
+            }
+
+            return Ok(to_return);
         }
 
         [HttpPost]
