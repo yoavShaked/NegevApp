@@ -1,9 +1,5 @@
 ﻿using codeFirst2.DataLayer.Repositories;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace codeFirst2.DataLayer
 {

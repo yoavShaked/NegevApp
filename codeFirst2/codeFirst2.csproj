@@ -264,7 +264,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Factory\IHttpHendlerRequestFactory.cs" />
     <Compile Include="Models\HelperClass\FileMapper.cs" />
     <Compile Include="Models\HelperClass\PredictCrops.cs" />
     <Compile Include="Models\LayerIdentity.cs" />
@@ -303,6 +302,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>

@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="codeFirst2.BundleConfig">
+    <Position X="18.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.FilterConfig">
+    <Position X="20.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.RouteConfig">
+    <Position X="20.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.WebApiConfig">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\WebApiConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Controllers.CoordinateController">
+    <Position X="32.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAQABAABAAACAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CoordinateController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Controllers.CropController">
+    <Position X="30.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAAAAAAAAAAAAAEAABAAAAMAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CropController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Controllers.DataBaseController">
+    <Position X="32.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Controllers\DataBaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Controllers.LayerController">
+    <Position X="28.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABBAAAAAAAAQAAAAAEAAIAAAAAAAAAAIgAAAAAAAAA=</HashCode>
+      <FileName>Controllers\LayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Controllers.SiteByYearController">
+    <Position X="34.5" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAgAAAAAAQAAAAAAAAAgIAAAAACAAAAAAAA=</HashCode>
+      <FileName>Controllers\SiteByYearController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Controllers.SiteController">
+    <Position X="36.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAgAAAAAAACgAAAAAAIAAAAAgAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Controllers\SiteController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.EntitiesNegev4">
+    <Position X="46.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAIAAAAIAAAAAAEAABBAAAAAAA=</HashCode>
+      <FileName>DataLayer\Context\EntitiesNegev4.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Coordinate" BaseTypeListCollapsed="true">
+    <Position X="37.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>DataLayer\Coordinate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Crop" BaseTypeListCollapsed="true">
+    <Position X="39.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAAAAAAAQAAAAAAAAAAAABgAAAAAA=</HashCode>
+      <FileName>DataLayer\Crop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="codeFirst2.DataLayer.CropConstrains" BaseTypeListCollapsed="true">
+    <Position X="46.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAADAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\CropContrains.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.212" />
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Layer" BaseTypeListCollapsed="true">
+    <Position X="44.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>DataLayer\Layer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Site" BaseTypeListCollapsed="true">
+    <Position X="41.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAgAAAAAAAAAAAAAQAIAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>DataLayer\Site.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.718" />
+  </Class>
+  <Class Name="codeFirst2.DataLayer.SiteByYear" BaseTypeListCollapsed="true">
+    <Position X="43" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\SiteByYear.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.176" />
+  </Class>
+  <Class Name="codeFirst2.DataLayer.HttpHelper.CoordinateHendler">
+    <Position X="0.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\HttpHelper\CoordinateHendler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.HttpHelper.CropHendler">
+    <Position X="2.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\HttpHelper\CropHendler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.HttpHelper.HttpHendlerRequestGeneric&lt;T&gt;">
+    <Position X="4.75" Y="13.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAICACAQAAAACIAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\HttpHelper\HttpHendlerRequestGeneric.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.HttpHelper.LayerHendler">
+    <Position X="5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\HttpHelper\LayerHendler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.HttpHelper.SiteHendler">
+    <Position X="7.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\HttpHelper\SiteHendler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.HttpHelper.SitesByYearHendler">
+    <Position X="9.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\HttpHelper\SitesByYearHendler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.LightWightesEntities.ILightWeight">
+    <Position X="5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\LightWightesEntities\ILightWeight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.LightWightesEntities.LightWeightCoordinate">
+    <Position X="7.25" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>DataLayer\LightWightesEntities\LightWeightCoordinate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.LightWightesEntities.LightWeightCrop">
+    <Position X="9.5" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAAAAAAAQAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>DataLayer\LightWightesEntities\LightWeightCrop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.LightWightesEntities.LightWeightLayer">
+    <Position X="0.5" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAIAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\LightWightesEntities\LightWeightLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.LightWightesEntities.LightWeightSite">
+    <Position X="2.75" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAgAAAgAAAAAAAAAQAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\LightWightesEntities\LightWeightSite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.LightWightesEntities.LightWeightSiteByYear">
+    <Position X="5" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAQAA=</HashCode>
+      <FileName>DataLayer\LightWightesEntities\LightWeightSiteByYear.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Repositories.GenericRepository&lt;T&gt;">
+    <Position X="5.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAMAAAAAAAAAAiAAAAAAAAAAAAgAAFAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\GenericRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories.CoordinateRepository" Collapsed="true">
+    <Position X="5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\NegevEntitiesRepositories\CoordinateRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories.CropRepository" Collapsed="true">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\NegevEntitiesRepositories\CropRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories.CropsConstrainsRepository" Collapsed="true">
+    <Position X="9.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\NegevEntitiesRepositories\CropsConstrainsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories.LayerRepository" Collapsed="true">
+    <Position X="11.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\NegevEntitiesRepositories\LayerRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories.SiteByYearRepository" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\NegevEntitiesRepositories\SiteByYearRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories.SiteRepository" Collapsed="true">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\NegevEntitiesRepositories\SiteRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Models.HelperClass.FileMapper">
+    <Position X="21.25" Y="3.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ESQAFAAAAAAAwAQEAAACEoEAAgAAAIAEAgAAAAAhAAA=</HashCode>
+      <FileName>Models\HelperClass\FileMapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Models.HelperClass.PredictCrops">
+    <Position X="18.75" Y="3.75" Width="2.25" />
+    <NestedTypes>
+      <Class Name="codeFirst2.Models.HelperClass.PredictCrops.CropYearPair" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\HelperClass\PredictCrops.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAgAAAAAAABAAYAAACAAAAIACCAAAAAAACAgAA=</HashCode>
+      <FileName>Models\HelperClass\PredictCrops.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="codeFirst2.Models.LayerIdentity">
+    <Position X="23.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LayerIdentity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="codeFirst2.DataLayer.Repositories.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAMAAAAAAAAAACAAAAAAAAAAAAgAAFAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\IRepostory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="codeFirst2.DataLayer.Repositories.ITableEntity" Collapsed="true">
+    <Position X="42.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataLayer\Repositories\ITableEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

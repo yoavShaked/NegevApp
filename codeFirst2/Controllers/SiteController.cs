@@ -18,7 +18,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 List<ILightWeight> sitesToSend = m_SiteHendler.GetAllTable(context) as List<ILightWeight>;
 
                 if (sitesToSend.Count > 0)
@@ -36,7 +36,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 ILightWeight siteToSend = m_SiteHendler.GetRowByID(i_SiteID, context);
 
                 if (siteToSend != null)
@@ -48,15 +48,14 @@ namespace codeFirst2.Controllers
             }
         }
 
-        //PREDICT CROP
         [HttpGet]
         [Route("api/site/predict")]
         public IHttpActionResult GetPredict(int i_SiteID)
         {
             List<LightWeightCrop> to_return = new List<LightWeightCrop>();
-            PredictCrops ps = new PredictCrops();
+            PredictCrops pc = new PredictCrops();
 
-            List<Crop> crops = ps.predictCropsToGrow(i_SiteID);
+            List<Crop> crops = pc.predictCropsToGrow(i_SiteID);
 
             foreach(Crop crop in crops)
             {
@@ -82,7 +81,7 @@ namespace codeFirst2.Controllers
                 catch
                 {
                     ok = false;
-                    response = BadRequest("could not post...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 }
                 if (ok)
                 {
@@ -109,7 +108,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not update...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 }
                 if (ok)
                 {
@@ -136,7 +135,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not delete");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 }
                 if (ok)
                 {

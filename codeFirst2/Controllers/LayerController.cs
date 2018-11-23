@@ -19,7 +19,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 List<ILightWeight> layersToSend = m_LayerHendler.GetAllTable(context) as List<ILightWeight>;
 
                 if (layersToSend.Count > 0)
@@ -37,7 +37,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 List<ILightWeight> layers = m_LayerHendler.GetAllTable(context) as List<ILightWeight>;
                 List<LayerIdentity> layersToSend = null;
 
@@ -67,7 +67,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 ILightWeight layerToSend = m_LayerHendler.GetRowByID(i_LayerID, context);
 
                 if (layerToSend != null)
@@ -94,7 +94,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not post...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                     ok = false;
                 }
                 if (ok)
@@ -122,7 +122,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not update...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                     ok = false;
                 }
                 if (ok)
@@ -150,7 +150,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not delete");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 }
                 if (ok)
                 {

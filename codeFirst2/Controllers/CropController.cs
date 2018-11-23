@@ -1,7 +1,6 @@
 ﻿using codeFirst2.DataLayer;
 using codeFirst2.DataLayer.HttpHelper;
 using codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories;
-using codeFirst2.Models.Factory;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -23,7 +22,7 @@ namespace codeFirst2.Controllers
             {
                 using (EntitiesNegev4 context = new EntitiesNegev4())
                 {
-                    IHttpActionResult response = NotFound();
+                    IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                     List<ILightWeight> cropsToSend = m_CropHendler.GetAllTable(context) as List<ILightWeight>;
 
                     if (cropsToSend.Count > 0)
@@ -46,7 +45,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 ILightWeight cropToSend = m_CropHendler.GetRowByID(id, context);
 
                 if (cropToSend != null)
@@ -73,7 +72,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not post...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                     ok = false;
                 }
                 if (ok)
@@ -101,7 +100,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not update...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                     ok = false;
                 }
                 if (ok)
@@ -129,7 +128,7 @@ namespace codeFirst2.Controllers
                 }
                 catch
                 {
-                    response = BadRequest("could not delete...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                     ok = false;
                 }
                 if (ok)

@@ -2,8 +2,6 @@
 using codeFirst2.DataLayer.HttpHelper;
 using codeFirst2.DataLayer.LightWightesEntities;
 using codeFirst2.DataLayer.Repositories;
-using codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories;
-using codeFirst2.Models.Factory;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -19,7 +17,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 List<ILightWeight> sitesByYearsToSend = m_SiteByYearHendler.GetAllTable(context) as List<ILightWeight>;
 
                 if (sitesByYearsToSend.Count > 0)
@@ -37,7 +35,7 @@ namespace codeFirst2.Controllers
         {
             using (EntitiesNegev4 context = new EntitiesNegev4())
             {
-                IHttpActionResult response = NotFound();
+                IHttpActionResult response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 ILightWeight siteByYearToSend = m_SiteByYearHendler.GetRowByID(i_SiteByYearID, context);
 
                 if (siteByYearToSend != null)
@@ -65,7 +63,7 @@ namespace codeFirst2.Controllers
                 catch
                 {
                     ok = false;
-                    response = BadRequest("could not post...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 }
                 if (ok)
                 {
@@ -93,7 +91,7 @@ namespace codeFirst2.Controllers
                 catch
                 {
                     ok = false;
-                    response = BadRequest("could not update...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 }
                 if (ok)
                 {
@@ -121,7 +119,7 @@ namespace codeFirst2.Controllers
                 catch
                 {
                     ok = false;
-                    response = BadRequest("could not delete...");
+                    response = StatusCode(System.Net.HttpStatusCode.ServiceUnavailable);
                 }
                 if (ok)
                 {

@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
 using System.IO;
 using codeFirst2.DataLayer;
 using codeFirst2.DataLayer.Repositories;
 using codeFirst2.DataLayer.HttpHelper;
-using codeFirst2.DataLayer.LightWightesEntities;
 using codeFirst2.DataLayer.Repositories.NegevEntitiesRepositories;
-using codeFirst2.Migrations;
 
 namespace codeFirst2.Models.HelperClass
 {
